@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Pantalla de administracion para gestionar subastas
+-->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="app_subastas.Views.AdminPage"
+    BackgroundColor="#0A0F1C"
+    NavigationPage.HasNavigationBar="False"
+    Padding="0">
+
+    <!-- Grid principal con dos filas: header y contenido -->
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header con titulo y botones -->
+        <Grid Grid.Row="0"
+              BackgroundColor="#111827"
+              Padding="15,20"
+              ColumnDefinitions="*,Auto,Auto">
+            <Label Text="ADMIN PANEL"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="1"
+                    Text="PERFIL"
+                    BackgroundColor="#6A00FF"
+                    TextColor="White"
+                    CornerRadius="20"
+                    Clicked="OnPerfilClicked"
+                    HeightRequest="40"
+                    WidthRequest="80"
+                    Margin="0,0,10,0"/>
+            <Button Grid.Column="2"
+                    Text="SALIR"
+                    BackgroundColor="#DC2626"
+                    TextColor="White"
+                    CornerRadius="20"
+                    Clicked="OnSalirClicked"
+                    HeightRequest="40"
+                    WidthRequest="80"/>
+        </Grid>
+
+        <!-- Contenido scrolleable -->
+        <ScrollView Grid.Row="1" Padding="15">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- Seccion: Crear Subasta -->
+                <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="CREAR SUBASTA" TextColor="#00D4FF" FontAttributes="Bold"/>
+                        <Entry x:Name="TituloEntry" Placeholder="Titulo" TextColor="White" BackgroundColor="#111827"/>
+                        <Entry x:Name="DescripcionEntry" Placeholder="Descripcion" TextColor="White" BackgroundColor="#111827"/>
+                        <Entry x:Name="PrecioEntry" Placeholder="Precio inicial" TextColor="White" BackgroundColor="#111827" Keyboard="Numeric"/>
+                        <Entry x:Name="DuracionEntry" Placeholder="Duracion (minutos)" TextColor="White" BackgroundColor="#111827" Keyboard="Numeric" Text="30"/>
+                        <Entry x:Name="ImagenUrlEntry" Placeholder="URL de imagen" TextColor="White" BackgroundColor="#111827"/>
+                        <Button Text="CREAR E INICIAR" BackgroundColor="#6A00FF" TextColor="White" CornerRadius="10" HeightRequest="45" Clicked="CrearSubasta"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Seccion: Subastas Activas -->
+                <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="SUBASTAS ACTIVAS" TextColor="#00D4FF" FontAttributes="Bold"/>
+                        <CollectionView x:Name="SubastasActivasList" HeightRequest="200">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10" BackgroundColor="#111827" Margin="0,4" ColumnDefinitions="*,Auto">
+                                        <VerticalStackLayout Grid.Column="0">
+                                            <Label Text="{Binding producto}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding precioActual, StringFormat='${0:N0}'}" TextColor="#A855F7"/>
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="1" 
+                                                Text="CHAT" 
+                                                BackgroundColor="#00D4FF" 
+                                                TextColor="White" 
+                                                CornerRadius="8" 
+                                                WidthRequest="60"
+                                                Clicked="AbrirChatSubasta"
+                                                CommandParameter="{Binding id}"
+                                                VerticalOptions="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Seccion: Historial de Subastas Finalizadas -->
+                <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="HISTORIAL" TextColor="#00D4FF" FontAttributes="Bold"/>
+                        <CollectionView x:Name="HistorialList" HeightRequest="250">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="10" BackgroundColor="#111827" Margin="0,4" ColumnDefinitions="*,Auto">
+                                        <VerticalStackLayout Grid.Column="0">
+                                            <Label Text="{Binding producto}" TextColor="White" FontAttributes="Bold"/>
+                                            <Label Text="{Binding precioActual, StringFormat='${0:N0}'}" TextColor="#A855F7"/>
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="1" 
+                                               Text="FINALIZADO" 
+                                               FontSize="11" 
+                                               TextColor="#EF4444" 
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

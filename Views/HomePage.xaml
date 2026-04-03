@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Pantalla principal del usuario para ver subastas activas e historial
+-->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="app_subastas.Views.HomePage"
+    BackgroundColor="#0A0F1C"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Padding="0">
+
+    <!-- Grid principal con dos filas: header y contenido -->
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header con titulo y boton perfil -->
+        <Grid Grid.Row="0"
+              BackgroundColor="#111827"
+              Padding="15,20"
+              ColumnDefinitions="*,Auto">
+            <Label Text="SUBASTAS"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="1"
+                    Text="PERFIL"
+                    BackgroundColor="#6A00FF"
+                    TextColor="White"
+                    CornerRadius="20"
+                    Clicked="OnPerfilClicked"
+                    HeightRequest="40"
+                    WidthRequest="90"/>
+        </Grid>
+
+        <!-- Contenido scrolleable -->
+        <ScrollView Grid.Row="1" Padding="15">
+            <VerticalStackLayout Spacing="25">
+
+                <!-- Seccion: Subastas Activas -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="SUBASTAS ACTIVAS" FontSize="18" FontAttributes="Bold" TextColor="#00D4FF"/>
+                    <CollectionView x:Name="SubastasList" SelectionMode="Single" SelectionChanged="OnSubastaSeleccionada">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="15" Margin="0,0,0,12">
+                                    <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="15">
+                                        <Image HeightRequest="50" WidthRequest="50" Source="cart.png"/>
+                                        <VerticalStackLayout Grid.Column="1">
+                                            <Label Text="{Binding producto}" FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                                            <Label Text="{Binding descripcion}" FontSize="12" TextColor="Gray" MaxLines="1"/>
+                                            <Label Text="{Binding precioActual, StringFormat='${0:N0}'}" FontSize="14" TextColor="#A855F7"/>
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="2" Text="→" FontSize="24" TextColor="#6A00FF" VerticalOptions="Center"/>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+                <!-- Seccion: Historial de subastas finalizadas -->
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="HISTORIAL" FontSize="18" FontAttributes="Bold" TextColor="#00D4FF"/>
+                    <CollectionView x:Name="HistorialList" HeightRequest="350">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="#1F2937" CornerRadius="12" Padding="12" Margin="0,8">
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                            <Label Text="{Binding producto}" FontSize="15" FontAttributes="Bold" TextColor="White"/>
+                                            <Label Text="{Binding precioActual, StringFormat='${0:N0}'}" FontSize="14" TextColor="#A855F7"/>
+                                            <Label Text="{Binding descripcion}" FontSize="11" TextColor="Gray" MaxLines="1"/>
+                                        </VerticalStackLayout>
+                                        <Label Grid.Column="1" 
+                                               Text="FINALIZADO" 
+                                               FontSize="11" 
+                                               TextColor="#EF4444" 
+                                               FontAttributes="Bold"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

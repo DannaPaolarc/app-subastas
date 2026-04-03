@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Pantalla de registro de nuevos usuarios
+-->
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="app_subastas.Views.RegistroPage"
+    BackgroundColor="#0B1C2C">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" Padding="30" Spacing="15">
+
+            <!-- Titulo principal -->
+            <Label Text="CREAR CUENTA"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <!-- Subtitulo -->
+            <Label Text="Registrate para participar"
+                   TextColor="#00D4FF"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10"/>
+
+            <!-- Campo: Nombre completo -->
+            <Frame BackgroundColor="#112B44" CornerRadius="15" Padding="5">
+                <Entry x:Name="nombreEntry"
+                       Placeholder="Nombre completo"
+                       TextColor="White"
+                       PlaceholderColor="Gray"/>
+            </Frame>
+
+            <!-- Campo: Correo electronico -->
+            <Frame BackgroundColor="#112B44" CornerRadius="15" Padding="5">
+                <Entry x:Name="correoEntry"
+                       Placeholder="Correo electronico"
+                       Keyboard="Email"
+                       TextColor="White"
+                       PlaceholderColor="Gray"/>
+            </Frame>
+
+            <!-- Campo: Contraseña -->
+            <Frame BackgroundColor="#112B44" CornerRadius="15" Padding="5">
+                <Entry x:Name="contrasenaEntry"
+                       Placeholder="Contraseña (min. 6 caracteres)"
+                       IsPassword="True"
+                       TextColor="White"
+                       PlaceholderColor="Gray"/>
+            </Frame>
+
+            <!-- Campo: Direccion -->
+            <Frame BackgroundColor="#112B44" CornerRadius="15" Padding="5">
+                <Entry x:Name="direccionEntry"
+                       Placeholder="Direccion"
+                       TextColor="White"
+                       PlaceholderColor="Gray"/>
+            </Frame>
+
+            <!-- Campo: Telefono (opcional) -->
+            <Frame BackgroundColor="#112B44" CornerRadius="15" Padding="5">
+                <Entry x:Name="telefonoEntry"
+                       Placeholder="Telefono (opcional)"
+                       Keyboard="Telephone"
+                       TextColor="White"
+                       PlaceholderColor="Gray"/>
+            </Frame>
+
+            <!-- Boton: Crear cuenta -->
+            <Button Text="Crear cuenta"
+                    BackgroundColor="#6A00FF"
+                    TextColor="White"
+                    CornerRadius="15"
+                    Clicked="OnRegistroClicked"/>
+
+            <!-- Boton: Volver al login -->
+            <Button Text="¿Ya tienes cuenta? Inicia sesion"
+                    BackgroundColor="Transparent"
+                    TextColor="#00D4FF"
+                    Clicked="OnVolverClicked"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

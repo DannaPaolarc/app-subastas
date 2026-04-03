@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ Pantalla de detalle de subasta con imagen, chat, timer y pujas
+-->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="app_subastas.SubastaPage"
+    BackgroundColor="#0A0F1C"
+    Title=""
+    NavigationPage.HasBackButton="True"
+    NavigationPage.HasNavigationBar="False"
+    Padding="0">
+
+    <!-- Grid principal con tres filas: header, contenido, footer -->
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <!-- Header con titulo y boton salir -->
+        <Grid Grid.Row="0"
+              BackgroundColor="#111827"
+              Padding="15,20"
+              ColumnDefinitions="*,Auto">
+            <Label Text="SUBASTA"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="1"
+                    Text="SALIR"
+                    BackgroundColor="#DC2626"
+                    TextColor="White"
+                    CornerRadius="20"
+                    Clicked="OnSalirClicked"
+                    HeightRequest="35"
+                    WidthRequest="70"/>
+        </Grid>
+
+        <!-- Contenido scrolleable -->
+        <ScrollView Grid.Row="2" Padding="15">
+            <VerticalStackLayout Spacing="15">
+
+                <!-- IMAGEN del producto -->
+                <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="0" HeightRequest="250" HasShadow="False">
+                    <Image x:Name="ImagenSubasta" Aspect="AspectFill" VerticalOptions="Fill"/>
+                </Frame>
+
+                <!-- Titulo y Descripcion -->
+                <VerticalStackLayout>
+                    <Label x:Name="TituloText" FontSize="22" FontAttributes="Bold" TextColor="White"/>
+                    <Label x:Name="DescripcionText" FontSize="14" TextColor="Gray"/>
+                </VerticalStackLayout>
+
+                <!-- Precio Actual y Tiempo Restante (dos columnas) -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                    <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout>
+                            <Label Text="PRECIO ACTUAL" FontSize="12" TextColor="Gray"/>
+                            <Label x:Name="PrecioActualText" FontSize="24" FontAttributes="Bold" TextColor="#A855F7" Text="$0"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                        <VerticalStackLayout>
+                            <Label Text="TIEMPO RESTANTE" FontSize="12" TextColor="Gray"/>
+                            <Label x:Name="TiempoText" FontSize="24" FontAttributes="Bold" TextColor="Orange" Text="00:00"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- CHAT EN VIVO -->
+                <Frame BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="CHAT EN VIVO" FontSize="16" FontAttributes="Bold" TextColor="#00D4FF"/>
+                        <ScrollView HeightRequest="200">
+                            <StackLayout x:Name="ChatContainer" Spacing="5"/>
+                        </ScrollView>
+                        <!-- Input para enviar mensajes -->
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <Entry x:Name="MensajeInput" 
+                                   Placeholder="Escribe un mensaje..." 
+                                   TextColor="White" 
+                                   BackgroundColor="#111827"
+                                   PlaceholderColor="Gray"/>
+                            <Button Grid.Column="1" 
+                                    Text="ENVIAR" 
+                                    BackgroundColor="#6A00FF" 
+                                    TextColor="White" 
+                                    CornerRadius="10" 
+                                    WidthRequest="90" 
+                                    HeightRequest="45"
+                                    FontSize="14"
+                                    Clicked="OnEnviarMensaje"/>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!--  puja solo visible para usuarios normales, no para admin -->
+                <Frame x:Name="PujaFrame" BackgroundColor="#1F2937" CornerRadius="15" Padding="15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="REALIZAR PUJA" FontSize="16" FontAttributes="Bold" TextColor="#00D4FF"/>
+                        <Entry x:Name="MontoInput" 
+                               Placeholder="Ingresa tu monto" 
+                               TextColor="White" 
+                               BackgroundColor="#111827" 
+                               Keyboard="Numeric"
+                               PlaceholderColor="Gray"/>
+                        <Button Text="PUJAR" 
+                                BackgroundColor="#6A00FF" 
+                                TextColor="White" 
+                                CornerRadius="10" 
+                                HeightRequest="50" 
+                                Clicked="OnPujarClicked"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

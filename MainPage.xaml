@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Pantalla de inicio de sesion de la aplicacion-->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="app_subastas.MainPage"
+    BackgroundColor="#0B1C2C"
+    NavigationPage.HasNavigationBar="False"
+    Padding="0">
+
+    <!-- Grid centrado vertical y horizontalmente -->
+    <Grid Padding="30" VerticalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Center" Spacing="20">
+
+            <!-- Titulo principal -->
+            <Label Text="SUBASTAS"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <!-- Subtitulo -->
+            <Label Text="Inicia sesion"
+                   TextColor="#00D4FF"
+                   HorizontalOptions="Center"/>
+
+            <!-- Campo: Correo electronico -->
+            <Entry x:Name="emailEntry"
+                   Placeholder="Correo"
+                   TextColor="White"
+                   BackgroundColor="#112B44"
+                   PlaceholderColor="Gray"/>
+
+            <!-- Campo: Contraseña -->
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Contraseña"
+                   IsPassword="True"
+                   TextColor="White"
+                   BackgroundColor="#112B44"
+                   PlaceholderColor="Gray"/>
+
+            <!-- Boton: Iniciar sesion -->
+            <Button Text="Iniciar sesion"
+                    BackgroundColor="#6A00FF"
+                    TextColor="White"
+                    CornerRadius="15"
+                    Clicked="OnLoginClicked"/>
+
+            <!-- Boton: Ir a registro -->
+            <Button Text="¿No tienes cuenta? Registrate"
+                    BackgroundColor="Transparent"
+                    TextColor="#00D4FF"
+                    Clicked="OnRegistroClicked"/>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

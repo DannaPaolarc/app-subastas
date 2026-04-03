@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Pantalla de perfil de usuario para ver y editar datos personales-->
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="app_subastas.Views.PerfilPage"
+    BackgroundColor="#0A0F1C"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False"
+    Padding="0">
+
+    <!-- Grid principal con dos filas: header y contenido -->
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Header con boton volver -->
+        <Grid Grid.Row="0"
+              BackgroundColor="#111827"
+              Padding="15,20"
+              ColumnDefinitions="Auto,*,Auto">
+            <!-- Boton de retroceso -->
+            <Button Text="←"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="24"
+                    Clicked="OnVolverClicked"
+                    WidthRequest="50"/>
+            <!-- Titulo centrado -->
+            <Label Grid.Column="1"
+                   Text="MI PERFIL"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <!-- Espaciador derecho para mantener el titulo centrado -->
+            <BoxView Grid.Column="2" WidthRequest="50"/>
+        </Grid>
+
+        <!-- Contenido scrolleable con campos del perfil -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <VerticalStackLayout Spacing="15">
+
+                <!-- Campo: Nombre completo -->
+                <Entry x:Name="NombreEntry"
+                       Placeholder="Nombre"
+                       TextColor="White"
+                       BackgroundColor="#1F2937"
+                       PlaceholderColor="Gray"/>
+
+                <!-- Campo: Correo electronico -->
+                <Entry x:Name="CorreoEntry"
+                       Placeholder="Correo"
+                       TextColor="White"
+                       BackgroundColor="#1F2937"
+                       Keyboard="Email"
+                       PlaceholderColor="Gray"/>
+
+                <!-- Campo: Numero de telefono -->
+                <Entry x:Name="TelefonoEntry"
+                       Placeholder="Numero"
+                       TextColor="White"
+                       BackgroundColor="#1F2937"
+                       Keyboard="Telephone"
+                       PlaceholderColor="Gray"/>
+
+                <!-- Campo: Direccion -->
+                <Entry x:Name="DireccionEntry"
+                       Placeholder="Direccion"
+                       TextColor="White"
+                       BackgroundColor="#1F2937"
+                       PlaceholderColor="Gray"/>
+
+                <!-- Campo: Nueva contraseña (opcional) -->
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Nueva contrasena"
+                       IsPassword="True"
+                       TextColor="White"
+                       BackgroundColor="#1F2937"
+                       PlaceholderColor="Gray"/>
+
+                <!-- Boton: Actualizar datos -->
+                <Button Text="ACTUALIZAR"
+                        BackgroundColor="#6A00FF"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        Clicked="OnActualizarClicked"/>
+
+                <!-- Boton: Cerrar sesion -->
+                <Button Text="CERRAR SESION"
+                        BackgroundColor="#DC2626"
+                        TextColor="White"
+                        CornerRadius="10"
+                        HeightRequest="50"
+                        Clicked="OnCerrarSesionClicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

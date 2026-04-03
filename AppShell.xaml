@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Definicion de la estructura de navegacion de la aplicacion-->
+<Shell
+    x:Class="app_subastas.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:app_subastas"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False">
+
+    <!--
+    Contenido principal del shell
+    Title: Titulo visible en la navegacion
+    ContentTemplate: Define que pagina se carga (MainPage)
+    Route: Ruta para navegacion por URL
+    -->
+    <ShellContent
+        Title="Login"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>
