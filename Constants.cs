@@ -13,11 +13,11 @@ public static class Constants
     public const string WsUrl = "ws://10.0.2.2:8080/ws-subastas/websocket";
 #elif RELEASE
     // Produccion en Render 
-    public const string BaseUrl = "https://tu-app.onrender.com/api";
-    public const string WsUrl = "wss://tu-app.onrender.com/ws-subastas/websocket";
+    public const string BaseUrl = "https://api-subastas-backup.onrender.com/api";
+    public const string WsUrl = "wss://api-subastas-backup.onrender.com/ws-subastas/websocket";
 #else
     // Entorno por defecto
     public const string BaseUrl = "http://localhost:8080/api";
     public const string WsUrl = "ws://localhost:8080/ws-subastas/websocket";
 #endif
-}
+}   
