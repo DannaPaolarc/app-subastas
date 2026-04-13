@@ -8,28 +8,14 @@ namespace app_subastas;
 
 public partial class SubastaPage : ContentPage
 {
-    // WebSocket para comunicacion en tiempo real
     private ClientWebSocket? _ws;
-
-    // ID de la subasta actual
     private readonly long _subastaId;
-
-    // Tiempo de finalizacion de la subasta
     private DateTime _tiempoFin;
-
-    // Gestor de audio
     private readonly IAudioManager _audioManager;
-
-    // Reproductor de sonido para pujas
     private IAudioPlayer? _playerPuja;
-
-    // Cliente HTTP para peticiones
     private readonly HttpClient _http;
-
-    // Timer para la cuenta regresiva
     private System.Timers.Timer? _timer;
 
-    // Constructor: inicializa componentes, oculta puja si es admin, carga datos
     public SubastaPage(long id, IAudioManager audio)
     {
         InitializeComponent();
@@ -38,7 +24,6 @@ public partial class SubastaPage : ContentPage
         _http = new HttpClient();
         _http.DefaultRequestHeaders.Add("Authorization", $"Bearer {SessionManager.Token}");
 
-        // Ocultar seccion de puja para administradores
         if (SessionManager.Rol == "ADMIN")
         {
             PujaFrame.IsVisible = false;
@@ -49,7 +34,6 @@ public partial class SubastaPage : ContentPage
         _ = ConectarWebSocket();
     }
 
-    // Carga los archivos de audio
     private async Task CargarAudio()
     {
         try
@@ -63,7 +47,6 @@ public partial class SubastaPage : ContentPage
         }
     }
 
-    // Carga los datos de la subasta desde el backend
     private async Task CargarSubasta()
     {
         try
@@ -98,16 +81,15 @@ public partial class SubastaPage : ContentPage
         }
     }
 
-    // Inicia el timer de cuenta regresiva
     private void IniciarTimer()
     {
         _timer = new System.Timers.Timer(1000);
         _timer.Elapsed += (s, e) =>
         {
-            var restante = _tiempoFin - DateTime.Now;
+            var segundosRestantes = (_tiempoFin - DateTime.UtcNow).TotalSeconds;
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                if (restante.TotalSeconds <= 0)
+                if (segundosRestantes <= 0)
                 {
                     TiempoText.Text = "FINALIZADO";
                     TiempoText.TextColor = Colors.Red;
@@ -115,8 +97,8 @@ public partial class SubastaPage : ContentPage
                 }
                 else
                 {
-                    var minutos = (int)restante.TotalMinutes;
-                    var segundos = restante.Seconds;
+                    var minutos = (int)(segundosRestantes / 60);
+                    var segundos = (int)(segundosRestantes % 60);
                     TiempoText.Text = $"{minutos:D2}:{segundos:D2}";
                 }
             });
@@ -125,28 +107,28 @@ public partial class SubastaPage : ContentPage
         _timer.Start();
     }
 
-    // Conecta al WebSocket para recibir mensajes en tiempo real
     private async Task ConectarWebSocket()
     {
         try
         {
+            System.Diagnostics.Debug.WriteLine("=== 1. CONECTANDO WEBSOCKET ===");
             _ws = new ClientWebSocket();
             await _ws.ConnectAsync(new Uri(Constants.WsUrl), CancellationToken.None);
+            System.Diagnostics.Debug.WriteLine("=== 2. WEBSOCKET CONECTADO ===");
 
-            // Suscribirse al canal de la subasta
-            string subscribeMsg = $"SUBSCRIBE\nid:sub-{_subastaId}\ndestination:/topic/subasta/{_subastaId}\n\n\0";
+            string subscribeMsg = $"SUBSCRIBE\ndestination:/topic/subasta/{_subastaId}\nid:0\n\n\0";
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(subscribeMsg);
             await _ws.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+            System.Diagnostics.Debug.WriteLine($"=== 3. SUSCRIPCION ENVIADA ===");
 
             _ = Task.Run(EscucharWebSocket);
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"WebSocket error: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"=== ERROR: {ex.Message}");
         }
     }
 
-    // Escucha mensajes entrantes del WebSocket
     private async Task EscucharWebSocket()
     {
         var buffer = new byte[4096];
@@ -156,29 +138,25 @@ public partial class SubastaPage : ContentPage
             {
                 var result = await _ws.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
                 var raw = System.Text.Encoding.UTF8.GetString(buffer, 0, result.Count);
-                var jsonStart = raw.IndexOf('{');
-                if (jsonStart >= 0)
+                System.Diagnostics.Debug.WriteLine($"=== MENSAJE RECIBIDO: {raw}");
+
+                var msg = JsonSerializer.Deserialize<MensajeChat>(raw);
+                if (msg != null)
                 {
-                    var json = raw.Substring(jsonStart);
-                    var msg = JsonSerializer.Deserialize<MensajeChat>(json);
-                    if (msg != null)
-                    {
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            MostrarMensaje(msg);
-                        });
-                    }
+                    MainThread.BeginInvokeOnMainThread(() => MostrarMensaje(msg));
                 }
             }
-            catch { break; }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"=== ERROR: {ex.Message}");
+                break;
+            }
         }
     }
 
-    // Muestra un mensaje en el chat
     private void MostrarMensaje(MensajeChat msg)
     {
         var color = msg.tipo == "PUJA" ? Colors.Lime : Colors.White;
-
         var label = new Label
         {
             Text = $"[{msg.hora}] {msg.usuario}: {msg.contenido}",
@@ -186,11 +164,9 @@ public partial class SubastaPage : ContentPage
             FontSize = 12,
             Margin = new Thickness(0, 2)
         };
-
         ChatContainer.Children.Add(label);
     }
 
-    // Envia una puja al backend
     private async void OnPujarClicked(object sender, EventArgs e)
     {
         if (!double.TryParse(MontoInput.Text, out double monto))
@@ -206,10 +182,8 @@ public partial class SubastaPage : ContentPage
         try
         {
             var res = await _http.PostAsync($"{Constants.BaseUrl}/subastas/{_subastaId}/ofertar", content);
-
             if (res.IsSuccessStatusCode)
             {
-                // Reproducir sonido de puja
                 _playerPuja?.Play();
                 MontoInput.Text = "";
                 await DisplayAlert("Exito", "Puja realizada!", "OK");
@@ -226,7 +200,6 @@ public partial class SubastaPage : ContentPage
         }
     }
 
-    // Envia un mensaje de chat via WebSocket
     private async void OnEnviarMensaje(object sender, EventArgs e)
     {
         if (string.IsNullOrWhiteSpace(MensajeInput.Text)) return;
@@ -235,42 +208,37 @@ public partial class SubastaPage : ContentPage
         {
             usuario = SessionManager.Nombre,
             contenido = MensajeInput.Text,
-            tipo = "CHAT",
             hora = DateTime.Now.ToString("HH:mm"),
             subastaId = _subastaId
         };
 
-        await EnviarMensajeWebSocket(msg);
-        MostrarMensaje(msg);
-        MensajeInput.Text = "";
-    }
+        var json = JsonSerializer.Serialize(msg);
+        string stompMsg = $"SEND\ndestination:/app/chat.enviar\ncontent-length:{json.Length}\n\n{json}\0";
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(stompMsg);
 
-    // Envia el mensaje WebSocket al backend
-    private async Task EnviarMensajeWebSocket(MensajeChat msg)
-    {
         try
         {
-            var ws = new ClientWebSocket();
-            await ws.ConnectAsync(new Uri(Constants.WsUrl), CancellationToken.None);
-
-            var json = JsonSerializer.Serialize(msg);
-            string stompMsg = $"SEND\ndestination:/app/chat.enviar\ncontent-length:{json.Length}\n\n{json}\0";
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(stompMsg);
-            await ws.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+            await _ws.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, CancellationToken.None);
+            System.Diagnostics.Debug.WriteLine("=== MENSAJE ENVIADO ===");
+            MostrarMensaje(msg);
+            MensajeInput.Text = "";
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error enviando: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"=== ERROR: {ex.Message}");
         }
     }
 
-    // Vuelve a la pantalla anterior
     private async void OnSalirClicked(object sender, EventArgs e)
     {
+        if (_ws != null)
+        {
+            await _ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
+            _ws.Dispose();
+        }
         await Navigation.PopAsync();
     }
 
-    // Limpia recursos al salir de la pantalla
     protected override void OnDisappearing()
     {
         base.OnDisappearing();

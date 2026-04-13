@@ -13,8 +13,8 @@ namespace app_subastas
         // Establece MainPage como pantalla de inicio
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            var window = new Window(new MainPage());
-            window.Title = ""; // Sin titulo en la barra de la ventana
+            var window = new Window(new NavigationPage(new MainPage()));  // ← Envuelve MainPage en NavigationPage
+            window.Title = "";
             return window;
         }
     }

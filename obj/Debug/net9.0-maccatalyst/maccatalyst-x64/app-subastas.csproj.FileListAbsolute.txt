@@ -291,6 +291,7 @@ C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccataly
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\app-subastas.AssemblyInfoInputs.cache
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\app-subastas.AssemblyInfo.cs
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\app-subastas.csproj.CoreCompileInputs.cache
+C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\app-subastas.sourcelink.json
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\XamlC.stamp
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\app-suba.9CC9204C.Up2Date
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-maccatalyst\maccatalyst-x64\app-subastas.dll

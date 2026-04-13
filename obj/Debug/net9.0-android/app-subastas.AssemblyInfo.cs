@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("app-subastas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+1f8f36fe1fc2be0dad0d219ac65a45d505b3c316")]
 [assembly: System.Reflection.AssemblyProductAttribute("app-subastas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("app-subastas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

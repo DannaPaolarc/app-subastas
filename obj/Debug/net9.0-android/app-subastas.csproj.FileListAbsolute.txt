@@ -127,6 +127,7 @@ C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\a
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\app-subastas.AssemblyInfoInputs.cache
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\app-subastas.AssemblyInfo.cs
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\app-subastas.csproj.CoreCompileInputs.cache
+C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\app-subastas.sourcelink.json
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\XamlC.stamp
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\app-subastas.dll
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\app-subastas.pdb
@@ -1341,7 +1342,6 @@ C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\a
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\AboutAssets.txt
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\bid.mp3
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\cart.png
-C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\subasta_banner.png
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\win.mp3
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\FluentUI.cs
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-android\assets\OpenSans-Regular.ttf

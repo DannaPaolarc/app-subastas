@@ -254,6 +254,7 @@ C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\bin\Debug\net9.0-ios\iossi
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet-nativeaot.a
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.a
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\bin\Debug\net9.0-ios\iossimulator-x64\libxamarin-dotnet.dylib
+C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\build-signature\signature
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-subastas.csproj.AssemblyReference.cache
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\mauiimage.inputs
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\mauifont.inputs
@@ -302,6 +303,7 @@ C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossi
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-subastas.AssemblyInfoInputs.cache
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-subastas.AssemblyInfo.cs
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-subastas.csproj.CoreCompileInputs.cache
+C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-subastas.sourcelink.json
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\XamlC.stamp
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-suba.9CC9204C.Up2Date
 C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\obj\Debug\net9.0-ios\iossimulator-x64\app-subastas.dll

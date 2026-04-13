@@ -1,0 +1,79 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net9.0-ios
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = app_subastas
+build_property.ProjectDir = C:\Users\danna\OneDrive\Desktop\Subastas\app-subastas\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Views/AdminPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Views.AdminPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AdminPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AdminPage.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Views/HomePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Views.HomePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\HomePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\HomePage.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Views/PerfilPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Views.PerfilPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\PerfilPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\PerfilPage.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Views/RegistroPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Views.RegistroPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\RegistroPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\RegistroPage.xaml
+
+[C:/Users/danna/OneDrive/Desktop/Subastas/app-subastas/Views/SubastaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = app_subastas.Views.SubastaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SubastaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SubastaPage.xaml

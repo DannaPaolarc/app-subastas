@@ -35,10 +35,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.5" />
     <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
     <!-- Bajamos Plugin.Maui.Audio a 3.0.1 que es estable con net9 -->
     <PackageReference Include="Plugin.Maui.Audio" Version="3.0.1" />
+    <PackageReference Include="Shtomper" Version="1.0.0.1" />
     <PackageReference Include="Stomp.Net" Version="2.4.0" />
   </ItemGroup>
 
